@@ -27,6 +27,7 @@ public class Tree : MonoBehaviour
             Destroy(gameObject);
         }else{
             health -= damage;
+            GetComponent<AudioSource>().Play(0);
         }
     }
 }

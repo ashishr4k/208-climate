@@ -7,6 +7,8 @@ public class Tool : MonoBehaviour
 {
     public GameObject helpText;
     public int damage = 10;
+    public float cutForce = 2f;
+    private bool canCut;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +18,11 @@ public class Tool : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        canCut = (GetComponent<Rigidbody>().velocity.magnitude < cutForce) ? false : true;
     }
 
     void OnCollisionEnter(Collision other){
-      if(other.gameObject.tag == "Tree") {
+      if(other.gameObject.tag == "Tree" && canCut) {
           other.gameObject.GetComponent<Tree>().TakeDamage(damage);
       }
     }

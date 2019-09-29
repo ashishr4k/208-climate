@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlantTrees : MonoBehaviour
+public class NaturalDisaster : MonoBehaviour
 {
     [SerializeField]
-    private GameObject treeTemplate;
+    private GreenHouseGasLevels ggController;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,8 +15,8 @@ public class PlantTrees : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(1)){
-            //Instantiate(treeTemplate, gameObject.transform.position + new Vector3(0,0,5), Quaternion.identity);
-        };
+
     }
+
+    
 }
