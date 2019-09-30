@@ -4,14 +4,14 @@ using UnityEngine;
 
 public static class NativeVideoPlayer {
 
-    private static System.IntPtr? _Activity;
-    private static System.IntPtr? _VideoPlayerClass;
+    private static System.IntPtr _Activity;
+    private static System.IntPtr _VideoPlayerClass;
 
     private static System.IntPtr VideoPlayerClass
     {
         get
         {
-            if (!_VideoPlayerClass.HasValue)
+            if (_VideoPlayerClass == System.IntPtr.Zero)
             {
                 try 
                 {
@@ -23,20 +23,14 @@ public static class NativeVideoPlayer {
 
                         AndroidJNI.DeleteLocalRef(myVideoPlayerClass);
                     }
-                    else
-                    {
-                        Debug.LogError("Failed to find MyVideoPlayer class");
-                        _VideoPlayerClass = System.IntPtr.Zero;
-                    }
                 }
                 catch(System.Exception ex)
                 {
                     Debug.LogError("Failed to find MyVideoPlayer class");
                     Debug.LogException(ex);
-                    _VideoPlayerClass = System.IntPtr.Zero;
                 }
             }
-            return _VideoPlayerClass.GetValueOrDefault();
+            return _VideoPlayerClass;
         }
     }
 
@@ -44,26 +38,18 @@ public static class NativeVideoPlayer {
     {
         get
         {
-            if (!_Activity.HasValue)
+            if (_Activity == System.IntPtr.Zero)
             {
-                try
-                {
-                    System.IntPtr unityPlayerClass = AndroidJNI.FindClass("com/unity3d/player/UnityPlayer");
-                    System.IntPtr currentActivityField = AndroidJNI.GetStaticFieldID(unityPlayerClass, "currentActivity", "Landroid/app/Activity;");
-                    System.IntPtr activity = AndroidJNI.GetStaticObjectField(unityPlayerClass, currentActivityField);
+                System.IntPtr unityPlayerClass = AndroidJNI.FindClass("com/unity3d/player/UnityPlayer");
+                System.IntPtr currentActivityField = AndroidJNI.GetStaticFieldID(unityPlayerClass, "currentActivity", "Landroid/app/Activity;");
+                System.IntPtr activity = AndroidJNI.GetStaticObjectField(unityPlayerClass, currentActivityField);
 
-                    _Activity = AndroidJNI.NewGlobalRef(activity);
+                _Activity = AndroidJNI.NewGlobalRef(activity);
 
-                    AndroidJNI.DeleteLocalRef(activity);
-                    AndroidJNI.DeleteLocalRef(unityPlayerClass);
-                }
-                catch(System.Exception ex)
-                {
-                    Debug.LogException(ex);
-                    _Activity = System.IntPtr.Zero;
-                }
+                AndroidJNI.DeleteLocalRef(activity);
+                AndroidJNI.DeleteLocalRef(unityPlayerClass);
             }
-            return _Activity.GetValueOrDefault();
+            return _Activity;
         }
     }
 
@@ -71,7 +57,6 @@ public static class NativeVideoPlayer {
     private static System.IntPtr stopMethodId;
     private static System.IntPtr resumeMethodId;
     private static System.IntPtr pauseMethodId;
-    private static System.IntPtr setPlaybackSpeedMethodId;
 
     public static bool IsAvailable
     {
@@ -127,15 +112,5 @@ public static class NativeVideoPlayer {
         }
 
         AndroidJNI.CallStaticVoidMethod(VideoPlayerClass, pauseMethodId, new jvalue[0]);        
-    }
-
-    public static void SetPlaybackSpeed(float speed)
-    {
-        if (setPlaybackSpeedMethodId == System.IntPtr.Zero)
-        {
-            setPlaybackSpeedMethodId = AndroidJNI.GetStaticMethodID(VideoPlayerClass, "setPlaybackSpeed", "(f)V");
-        }
-
-        AndroidJNI.CallStaticVoidMethod(VideoPlayerClass, setPlaybackSpeedMethodId, new jvalue[] { new jvalue { f = speed } });
     }
 }
