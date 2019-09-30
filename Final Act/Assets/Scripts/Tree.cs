@@ -10,6 +10,8 @@ public class Tree : MonoBehaviour
     private GreenHouseGasLevels ggController;
     [SerializeField]
     private GameController gameController;
+    public GameObject dustEffectPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,7 @@ public class Tree : MonoBehaviour
             ggController.UpdateGasLevels("Increase", storage);
             gameController.MoneyChange("Increase", 10);
             //play animation
+            GameObject dustEffect = (GameObject)Instantiate(dustEffectPrefab, transform.position, transform.rotation);
             Destroy(gameObject);
         }else{
             health -= damage;

@@ -24,7 +24,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Money.text = "Cash: $" + money;
+        Money.text = "Cash: $" + money; 
         healthDecreaseRate = ggController.GreenHouseGasSlider.value;
         if(Time.time > elapsedTime){
             elapsedTime += TakeDamageInterval;

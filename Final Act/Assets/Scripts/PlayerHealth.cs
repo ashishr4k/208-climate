@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void FixedUpdate()
     {
+        
         healthSlider.value = health;
 
         if (health > 100)
