@@ -6,6 +6,8 @@ public class PlantTrees : MonoBehaviour
 {
     [SerializeField]
     private GameObject treeTemplate;
+	//[SerializeField]
+	
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +18,7 @@ public class PlantTrees : MonoBehaviour
     void Update()
     {
         if(Input.GetMouseButtonDown(1)){
-            //Instantiate(treeTemplate, gameObject.transform.position + new Vector3(0,0,5), Quaternion.identity);
+            Instantiate(treeTemplate, gameObject.transform.position + new Vector3(0,0,5), Quaternion.identity);
         };
     }
 }
