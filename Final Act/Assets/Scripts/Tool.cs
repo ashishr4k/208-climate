@@ -5,14 +5,13 @@ using UnityEngine;
 
 public class Tool : MonoBehaviour
 {
-    public GameObject helpText;
+    //public GameObject helpText;
     public int damage = 10;
     public float cutForce = 2f;
     private bool canCut;
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -28,11 +27,11 @@ public class Tool : MonoBehaviour
     }
 
     void OnMouseDown(){
-        helpText.SetActive(false);
+        //helpText.SetActive(false);
     }
 
     void OnMouseUp(){
-        helpText.SetActive(true);
+        //helpText.SetActive(true);
     }
 
 }
