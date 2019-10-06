@@ -6,8 +6,6 @@ public class PlantTrees : MonoBehaviour
 {
     [SerializeField]
     private GameObject treeTemplate;
-	//[SerializeField]
-	
     // Start is called before the first frame update
     void Start()
     {
