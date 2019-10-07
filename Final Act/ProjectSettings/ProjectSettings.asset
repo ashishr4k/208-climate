@@ -161,6 +161,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.Company.FinalAct
     Standalone: com.oculus.UnitySample
+    Windows Store Apps: com.oculus.UnitySample
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 19

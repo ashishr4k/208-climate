@@ -28,7 +28,7 @@ public class GameController : MonoBehaviour
         healthDecreaseRate = ggController.GreenHouseGasSlider.value;
         if(Time.time > elapsedTime){
             elapsedTime += TakeDamageInterval;
-            Debug.Log("Player Health Decreased by: " + healthDecreaseRate);
+            //Debug.Log("Player Health Decreased by: " + healthDecreaseRate);
             playerHealth.health -= healthDecreaseRate;
         }
     }
