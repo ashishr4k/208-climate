@@ -5,6 +5,7 @@ using System.Collections;
 /// Spin the object at a specified speed
 /// </summary>
 public class SpinFree : MonoBehaviour {
+	
 	[Tooltip("Spin: Yes or No")]
 	public bool spin;
 	[Tooltip("Spin the parent object instead of the object this script is attached to")]

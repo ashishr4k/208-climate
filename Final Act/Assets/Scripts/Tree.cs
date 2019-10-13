@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class Tree : MonoBehaviour
 {
-    int health;
+    public int health;
     public int storage;
-    //[SerializeField]
-    //private GreenHouseGasLevels ggController;
-    //[SerializeField]
-    //private GameController gameController;
+    private GameController gameController;
     public GameObject dustEffectPrefab;
 
     // Start is called before the first frame update
@@ -17,15 +14,16 @@ public class Tree : MonoBehaviour
     {
         health  = 30;
         storage = 1;
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
     }
 
     public void TakeDamage(int damage){
 
         if(health == damage ){
-            Debug.Log("Tree cut");
-            //ggController.UpdateGasLevels("Increase", storage);
-            //gameController.MoneyChange("Increase", 10);
+            gameController.UpdateGasLevels("Increase", storage);
+            gameController.MoneyChange("Increase", 10);
             //play animation
+            GetComponent<AudioSource>().Play(0);
             GameObject dustEffect = (GameObject)Instantiate(dustEffectPrefab, transform.position, transform.rotation);
             Destroy(gameObject);
         }else{

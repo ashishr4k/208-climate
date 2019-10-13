@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Earth : MonoBehaviour
 {
     //public Animator earthAnimator;
-    GameObject player;
+    public Slider healthbar;
     float health;
     public Texture earthTexture1;
     public Texture earthTexture2;
@@ -15,25 +16,19 @@ public class Earth : MonoBehaviour
     public Texture earthTexture6;
     Renderer earth;
 
-    void Awake()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-    }
-
     void Start()
     {
         earth = GetComponent<Renderer>();
     }
     public void Update()
     {
-        health = player.GetComponent<PlayerHealth>().health;
-        
+        health = healthbar.value;
+
         if (health > 0 && health < 16)
         {
-            
             earth.material.SetTexture("_MainTex", earthTexture1);
         }
-        
+
         if (health > 16 && health < 32)
         {
             earth.material.SetTexture("_MainTex", earthTexture2);
@@ -54,7 +49,7 @@ public class Earth : MonoBehaviour
         {
             earth.material.SetTexture("_MainTex", earthTexture6);
         }
-        
+
     }
 
 }
