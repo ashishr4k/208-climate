@@ -13,7 +13,7 @@ public class Tree : MonoBehaviour
     void Start()
     {
         health  = 30;
-        storage = 1;
+        storage = 7;
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
     }
 

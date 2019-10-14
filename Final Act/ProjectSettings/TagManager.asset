@@ -7,6 +7,7 @@ TagManager:
   - Tree
   - Fire
   - Floor
+  - Ground
   layers:
   - Default
   - TransparentFX

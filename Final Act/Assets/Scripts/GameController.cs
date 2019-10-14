@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour
     public Text Money;
     public Slider healthbar;
     public Slider greenhousegasbar;
+    public Light light;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,8 +47,10 @@ public class GameController : MonoBehaviour
     public void UpdateGasLevels(string change, int value){
         if(change == "Increase"){
             CO2Level += value;
+            RenderSettings.fogDensity += 0.1f;
         }else{
             CO2Level -= value;
+            RenderSettings.fogDensity -= 0.1f;
         }
     }
 }
