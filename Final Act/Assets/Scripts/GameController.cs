@@ -14,42 +14,49 @@ public class GameController : MonoBehaviour
     public Text Money;
     public Slider healthbar;
     public Slider greenhousegasbar;
-    public Light light;
+    public GameObject test;
     // Start is called before the first frame update
     void Start()
     {
         money = 0;
         CO2Level = 0f;
         health = 100f;
+        Money.text = "Cash: $0";
     }
 
     // Update is called once per frame
     void Update()
     {
-        Money.text = "Cash: $" + money;
-        healthbar.value = health;
-        greenhousegasbar.value = CO2Level;
-
-        healthDecreaseRate = greenhousegasbar.value;
+        //healthbar.value = health;
+        //greenhousegasbar.value = CO2Level;
+        healthDecreaseRate = greenhousegasbar.value/10;
         if(Time.time > elapsedTime){
             elapsedTime += TakeDamageInterval;
-            health -= healthDecreaseRate;
+            healthbar.value -= healthDecreaseRate;
+        }
+
+        if(OVRInput.GetDown(OVRInput.Button.One)){
+            if(test.activeInHierarchy){
+                test.SetActive(false);
+            }else{
+                test.SetActive(true);
+            }
         }
     }
 
     public void MoneyChange(string change, int value){
         if(change == "Increase"){
-            money += value;
+            Money.text = "Cash: $" + (money + value);
         }else{
-            money -= value;
+            Money.text = "Cash: $" + (money - value);
         }
     }
     public void UpdateGasLevels(string change, int value){
         if(change == "Increase"){
-            CO2Level += value;
+            greenhousegasbar.value += value;
             RenderSettings.fogDensity += 0.1f;
         }else{
-            CO2Level -= value;
+            greenhousegasbar.value -= value;
             RenderSettings.fogDensity -= 0.1f;
         }
     }

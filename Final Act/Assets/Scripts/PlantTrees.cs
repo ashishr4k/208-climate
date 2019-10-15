@@ -32,9 +32,9 @@ public class PlantTrees : MonoBehaviour
     {
         if(other.gameObject.tag == "Ground" && ready && !GetComponent<OVRGrabbable>().isGrabbed)
         {
-            Instantiate(treeTemplate, gameObject.transform.position, Quaternion.identity);
+            GameObject newtree = Instantiate(treeTemplate, gameObject.transform.position, Quaternion.identity);
+            newtree.GetComponent<Animator>().SetTrigger("Grow");
             gc.UpdateGasLevels("Decrease", 7);
-            //Debug.Log("Plant");
             Destroy(this.gameObject);
         }
     }

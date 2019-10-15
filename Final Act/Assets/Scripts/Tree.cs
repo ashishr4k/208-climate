@@ -8,6 +8,9 @@ public class Tree : MonoBehaviour
     public int storage;
     private GameController gameController;
     public GameObject dustEffectPrefab;
+    public AudioClip growingClip;
+    public AudioClip fallingClip;
+    public AudioClip cuttingClip;
 
     // Start is called before the first frame update
     void Start()
