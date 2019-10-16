@@ -8,14 +8,14 @@ public class GameController : MonoBehaviour
     float healthDecreaseRate;
     int money;
     float CO2Level;
-    float health;
+    public float health;
     private float elapsedTime = 2f;
     private float TakeDamageInterval = 2f;
     public Text Money;
     public Slider healthbar;
     public Slider greenhousegasbar;
     public Light light;
-    // Start is called before the first frame update
+    
     void Start()
     {
         money = 0;
@@ -23,7 +23,6 @@ public class GameController : MonoBehaviour
         health = 100f;
     }
 
-    // Update is called once per frame
     void Update()
     {
         Money.text = "Cash: $" + money;
@@ -48,6 +47,7 @@ public class GameController : MonoBehaviour
         if(change == "Increase"){
             CO2Level += value;
             RenderSettings.fogDensity += 0.1f;
+
         }else{
             CO2Level -= value;
             RenderSettings.fogDensity -= 0.1f;

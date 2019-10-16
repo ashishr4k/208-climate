@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6077605507297208782}
   - component: {fileID: 6077605507297208783}
   - component: {fileID: 6077605507297208781}
+  - component: {fileID: 7123723274149210277}
   m_Layer: 0
   m_Name: Larch01
   m_TagString: Tree
@@ -88,10 +89,10 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6077605507297208776}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0d6358f271758654f82276c83fe26016, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6d3714cbb84220f498c2450e4585c143, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -193,6 +194,9 @@ MonoBehaviour:
   storage: 5
   dustEffectPrefab: {fileID: 4853101079307328776, guid: 84661901bbae8470f9536c6a09e737fd,
     type: 3}
+  treeFallingSoundEffectPrefab: {fileID: 4716134993454307796, guid: 4b08275f40b2e2549882a4cc5b725156,
+    type: 3}
+  stump: {fileID: 1456703055220044, guid: b71e387166e4ce648849bbd6b762b736, type: 3}
 --- !u!65 &6077605507297208781
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -206,3 +210,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.1175919, y: 3.5733283, z: 1.3063126}
   m_Center: {x: -0.0017814636, y: 1.3351575, z: 0.10794449}
+--- !u!95 &7123723274149210277
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6077605507297208776}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 504a2cbd5f6b2e44f8c9e5067f26bba1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

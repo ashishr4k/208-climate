@@ -8,6 +8,9 @@ public class PlantTrees : MonoBehaviour
     private GameObject treeTemplate;
     private bool ready;
     private GameController gc;
+    public GameObject treeGrowSoundEffectPrefab;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +35,9 @@ public class PlantTrees : MonoBehaviour
     {
         if(other.gameObject.tag == "Ground" && ready && !GetComponent<OVRGrabbable>().isGrabbed)
         {
+            Instantiate(treeGrowSoundEffectPrefab, transform.position, transform.rotation);
             Instantiate(treeTemplate, gameObject.transform.position, Quaternion.identity);
+            GameObject.Find("GameController").GetComponent<GameController>().health += 7;
             gc.UpdateGasLevels("Decrease", 7);
             //Debug.Log("Plant");
             Destroy(this.gameObject);
