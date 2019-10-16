@@ -14,8 +14,8 @@ public class GameController : MonoBehaviour
     public Text Money;
     public Slider healthbar;
     public Slider greenhousegasbar;
-    public Light light;
-    
+    public GameObject HUD;
+
     void Start()
     {
         money = 0;
@@ -34,8 +34,15 @@ public class GameController : MonoBehaviour
         //    elapsedTime += TakeDamageInterval;
         //    health -= healthDecreaseRate;
         //}
-    }
 
+        if(OVRInput.GetDown(OVRInput.Button.One)){
+            if(HUD.activeInHierarchy){
+                HUD.SetActive(false);
+            }else{
+                HUD.SetActive(true);
+            }
+        }
+    }
     public void MoneyChange(string change, int value){
         if(change == "Increase"){
             money += value;

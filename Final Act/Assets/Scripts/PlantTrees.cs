@@ -24,11 +24,6 @@ public class PlantTrees : MonoBehaviour
         {
             ready = true;
         }
-        /*
-        if(Input.GetMouseButtonDown(1)){
-            Instantiate(treeTemplate, gameObject.transform.position + new Vector3(0,0,5), Quaternion.identity);
-        };
-        */
     }
 
     void OnCollisionEnter(Collision other)
@@ -37,10 +32,10 @@ public class PlantTrees : MonoBehaviour
         {
             Instantiate(treeGrowSoundEffectPrefab, transform.position, transform.rotation);
             Instantiate(treeTemplate, gameObject.transform.position, Quaternion.identity);
-            GameObject.Find("GameController").GetComponent<GameController>().health += 10;
-            GameObject.Find("GameController").GetComponent<GameController>().CO2Level -= 10;
+            gc.GetComponent<GameController>().health += 10;
+            gc.GetComponent<GameController>().CO2Level -= 10;
             //gc.UpdateGasLevels("Decrease", 7);
-            
+
             RenderSettings.fogDensity -= 0.01f;
             //Debug.Log("Plant");
             Destroy(this.gameObject);

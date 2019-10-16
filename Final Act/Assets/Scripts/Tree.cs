@@ -27,8 +27,8 @@ public class Tree : MonoBehaviour
         {
             //gameController.UpdateGasLevels("Increase", storage);
             gameController.MoneyChange("Increase", 10);
-            GameObject.Find("GameController").GetComponent<GameController>().health -= 10;
-            GameObject.Find("GameController").GetComponent<GameController>().CO2Level += 10;
+            gameController.GetComponent<GameController>().health -= 10;
+            gameController.GetComponent<GameController>().CO2Level += 10;
             RenderSettings.fogDensity += 0.01f;
             //play animation
             //GetComponent<AudioSource>().Play(0);
@@ -41,11 +41,8 @@ public class Tree : MonoBehaviour
         }
         else
         {
-
             treeHealth -= damage;
-        
             //GetComponent<AudioSource>().Play(0);
-
         }
     }
 }
