@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tree : MonoBehaviour
 {
-    public int health;
+    public int treeHealth;
     public int storage;
     private GameController gameController;
     public GameObject dustEffectPrefab;
@@ -15,19 +15,21 @@ public class Tree : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = 30;
-        storage = 7;
+        treeHealth = 30;
+        //storage = 7;
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
     }
 
     public void TakeDamage(int damage)
     {
 
-        if (health == damage)
+        if (treeHealth == damage)
         {
-            gameController.UpdateGasLevels("Increase", storage);
+            //gameController.UpdateGasLevels("Increase", storage);
             gameController.MoneyChange("Increase", 10);
-
+            GameObject.Find("GameController").GetComponent<GameController>().health -= 10;
+            GameObject.Find("GameController").GetComponent<GameController>().CO2Level += 10;
+            RenderSettings.fogDensity += 0.01f;
             //play animation
             //GetComponent<AudioSource>().Play(0);
             //treeFallingSoundEffect.Play();
@@ -40,7 +42,8 @@ public class Tree : MonoBehaviour
         else
         {
 
-            health -= damage;
+            treeHealth -= damage;
+        
             //GetComponent<AudioSource>().Play(0);
 
         }

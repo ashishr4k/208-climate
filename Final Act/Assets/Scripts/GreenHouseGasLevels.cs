@@ -17,10 +17,14 @@ public class GreenHouseGasLevels : MonoBehaviour
         }
     }
 
-    public void UpdateGasLevels(string change, int value){
-        if(change == "Increase"){
+    public void UpdateGasLevels(string change, int value)
+    {
+        if (change == "Increase")
+        {
             CO2Level += value;
-        }else{
+        }
+        else
+        {
             CO2Level -= value;
         }
     }

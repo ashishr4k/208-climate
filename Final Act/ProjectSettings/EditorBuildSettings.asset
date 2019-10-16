@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Kyle_Version_1.unity
+    guid: e02587b015793446fbd05aec93f0d5ab
+  - enabled: 1
+    path: Assets/Scenes/Game Over.unity
+    guid: bd00b4d4f1c3dcf459f740b4d32dd6e5
   m_configObjects: {}

@@ -37,8 +37,11 @@ public class PlantTrees : MonoBehaviour
         {
             Instantiate(treeGrowSoundEffectPrefab, transform.position, transform.rotation);
             Instantiate(treeTemplate, gameObject.transform.position, Quaternion.identity);
-            GameObject.Find("GameController").GetComponent<GameController>().health += 7;
-            gc.UpdateGasLevels("Decrease", 7);
+            GameObject.Find("GameController").GetComponent<GameController>().health += 10;
+            GameObject.Find("GameController").GetComponent<GameController>().CO2Level -= 10;
+            //gc.UpdateGasLevels("Decrease", 7);
+            
+            RenderSettings.fogDensity -= 0.01f;
             //Debug.Log("Plant");
             Destroy(this.gameObject);
         }

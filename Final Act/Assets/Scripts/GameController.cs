@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour
 {
     float healthDecreaseRate;
     int money;
-    float CO2Level;
+    public float CO2Level;
     public float health;
     private float elapsedTime = 2f;
     private float TakeDamageInterval = 2f;
@@ -29,11 +29,11 @@ public class GameController : MonoBehaviour
         healthbar.value = health;
         greenhousegasbar.value = CO2Level;
 
-        healthDecreaseRate = greenhousegasbar.value;
-        if(Time.time > elapsedTime){
-            elapsedTime += TakeDamageInterval;
-            health -= healthDecreaseRate;
-        }
+        //healthDecreaseRate = greenhousegasbar.value;
+        //if(Time.time > elapsedTime){
+        //    elapsedTime += TakeDamageInterval;
+        //    health -= healthDecreaseRate;
+        //}
     }
 
     public void MoneyChange(string change, int value){
