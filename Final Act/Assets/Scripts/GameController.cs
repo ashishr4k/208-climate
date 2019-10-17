@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -41,6 +42,11 @@ public class GameController : MonoBehaviour
             }else{
                 HUD.SetActive(true);
             }
+        }
+
+        if (health <= 0)
+        {
+            SceneManager.LoadScene("Game Over");
         }
     }
     public void MoneyChange(string change, int value){
